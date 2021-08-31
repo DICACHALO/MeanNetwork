@@ -1,2 +1,2 @@
 # MeanNetwork
-Post and users
+Users and posts
