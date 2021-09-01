@@ -13,6 +13,13 @@ import { FooterComponent } from './home/footer/footer.component';
 import { ListPostComponent } from './post/list-post/list-post.component';
 import { SavePostComponent } from './post/save-post/save-post.component';
 
+import { UserService } from './services/user.service';
+import { PostService } from './services/post.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './guard/auth.guard';
+
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +35,10 @@ import { SavePostComponent } from './post/save-post/save-post.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UserService, PostService, TokenInterceptorService, AuthGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
