@@ -4,6 +4,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { ListPostComponent } from './post/list-post/list-post.component';
 import { SavePostComponent } from './post/save-post/save-post.component';
+import { AuthGuard } from "./guard/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,11 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'listPost',
-    component: ListPostComponent
+    component: ListPostComponent, 
+    canActivate: [AuthGuard]
   },
   {
     path: 'savePost',
-    component: SavePostComponent
+    component: SavePostComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

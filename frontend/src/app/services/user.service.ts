@@ -19,4 +19,12 @@ export class UserService {
     return this._http.post<any>(this.env + 'user/login', user);
   }
 
+  loggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
 }
