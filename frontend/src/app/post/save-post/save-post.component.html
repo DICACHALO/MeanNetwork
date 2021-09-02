@@ -1,1 +1,32 @@
-<p>save-post works!</p>
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Create Post</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+              <input
+                [(ngModel)]="registerData.title"
+                matInput
+                placeholder="Tittle"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="registerData.text"
+                matInput
+                placeholder="Text"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="savePost()" class="button" mat-raised-button>
+            Create
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
