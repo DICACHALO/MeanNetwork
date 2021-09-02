@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema({
     title: String,
     text: String,
     date: {type:Date, default: Date.now},
-    status: Boolean, //True is public - False is private
+    status: String,
 });
 
 const post = mongoose.model("post", postSchema);

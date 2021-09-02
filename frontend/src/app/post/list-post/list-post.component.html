@@ -1,1 +1,55 @@
-<p>list-post works!</p>
+<div class="bgComponent">
+  <div class="accordion_display">
+    <div class="accordion_size">
+      <mat-accordion multi="true" *ngIf="postData.length">
+        <mat-expansion-panel *ngFor="let post of postData" hideToggle="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span
+                >{{ post.title }}</span
+              >
+              <span class="spacer"></span>
+              <button
+                class="btnPublic"
+                *ngIf="post.status == 'público'"
+                mat-raised-button
+              >
+                {{ post.status }}
+              </button>
+              <button
+                class="btnPrivate"
+                *ngIf="post.status == 'privado'"
+                mat-raised-button
+              >
+                {{ post.status }}
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            {{ post.text }}
+            <span class="spacer"></span>
+            <mat-icon color="primary" (click)="deletePost(post)"
+              >delete</mat-icon
+            >
+          </mat-panel-description>
+          <mat-action-row>
+              <button
+              class="btnSelectPublic"
+              mat-button
+              (click)="updatePost(post, 'público')"
+              > 
+            Público
+              </button>
+              <button
+              class="btnSelectPrivate"
+              mat-button
+              (click)="updatePost(post, 'privado')"
+              > 
+            Privado
+              </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

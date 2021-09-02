@@ -8,7 +8,7 @@ const savePost = async (req, res) => {
     userId: req.user._id,
     title: req.body.title,
     text: req.body.text,
-    status: true,
+    status: 'público',
   });
 
   const result = await post.save();
