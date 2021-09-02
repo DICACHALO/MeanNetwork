@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './home/header/header.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
@@ -19,12 +19,13 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './guard/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatToolbarModule} from '@angular/material/toolbar'
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +48,18 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
-  providers: [UserService, PostService, TokenInterceptorService, AuthGuard],
+  providers: [
+    UserService,
+    PostService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
